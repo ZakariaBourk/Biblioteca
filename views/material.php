@@ -29,6 +29,20 @@ $material = $biblioteca->cercarPerId($id);
         <p>Duració: <?= $material->getDuracioFormatada() ?></p>
     <?php endif; ?>
 
+    <?php if ($material->isDisponible()): ?>
+
+        <p>
+            <a href="index.php?page=prestec&material_id=<?= $material->getId() ?>">
+                Prestar material
+            </a>
+        </p>
+
+    <?php else: ?>
+
+        <p>Aquest material ja està prestat.</p>
+
+    <?php endif; ?>
+
     <h2>Historial d'auditoria</h2>
 
     <ul>

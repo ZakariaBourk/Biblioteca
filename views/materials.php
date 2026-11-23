@@ -47,17 +47,25 @@ $materials = match ($tipus) {
                 <td><?= htmlspecialchars($material->getTitol()) ?></td>
                 <td><?= htmlspecialchars($material->getAutor()) ?></td>
                 <td><?= $material->getAnyPublicacio() ?></td>
-                <td><?= $material->getTipus() ?></td>
+                <td><?= htmlspecialchars($material->getTipus()) ?></td>
                 <td><?= $material->isDisponible() ? 'Disponible' : 'Prestat' ?></td>
                 <td>
                     <a href="index.php?page=material&id=<?= $material->getId() ?>">
                         Veure
                     </a>
+                    <?php if ($material->isDisponible()): ?>
+                        |
+                        <a href="index.php?page=prestec&material_id=<?= $material->getId() ?>">
+                            Prestar
+                        </a>
+                    <?php endif; ?>
                 </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
+
+<p><a href="index.php">Tornar a l'inici</a></p>
 
 </body>
 </html>
